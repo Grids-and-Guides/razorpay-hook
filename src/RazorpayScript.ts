@@ -6,7 +6,7 @@ interface RazorpayScriptProps
     HTMLScriptElement
   > {}
 
-const RazorpayScript: React.FC<RazorpayScriptProps> = ({ ...attributes }) => {
+export const RazorpayScript: React.FC<RazorpayScriptProps> = ({ ...attributes }) => {
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://checkout.razorpay.com/v1/checkout.js";
@@ -24,4 +24,4 @@ const RazorpayScript: React.FC<RazorpayScriptProps> = ({ ...attributes }) => {
   return null;
 };
 
-export default RazorpayScript;
+
