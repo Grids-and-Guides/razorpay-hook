@@ -1,6 +1,6 @@
 {
   "name": "razorpay-hook",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Seamlessly integrate Razorpay's powerful payment solutions into your React and Next.js applications. This package simplifies the process of setting up secure, reliable, and efficient payment gateways, giving developers a streamlined experience while building high-performance apps.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",

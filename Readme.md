@@ -61,9 +61,7 @@ const handlePayment = async (params) => {
      */
     order_id: "order_9A33XWu170gUtm",
     handler: function (response: RazorpaySuccessResponse) {
-      alert(response.razorpay_payment_id);
-      alert(response.razorpay_order_id);
-      alert(response.razorpay_signature);
+      alert(response);
     },
   };
 
@@ -81,9 +79,11 @@ const handlePayment = async (params) => {
 
 
 return(
+    <>
     <RazorpayScript />
 
     <button onClick={handlePayment} > pay </button>
+    </>
 )
 ```
 
