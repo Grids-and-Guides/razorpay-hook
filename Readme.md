@@ -52,7 +52,8 @@ const handlePayment = async (params) => {
     /**
      * String Order ID generated via Orders API.
      * * @See {@link https://razorpay.com/docs/api/orders/ Razorpay Docs }
-     * Note: If you passing invalid order id the the pop up will not open, you will see the error from the console.
+     * Note: Blow order id displayed only for reference. You need to pass order id generated via order api response.
+     * If you passing invalid order id the pop up will not open, you will see the error from the console.
      */
     order_id: "order_9A33XWu170gUtm",
     handler: function (response: RazorpaySuccessResponse) {
@@ -62,8 +63,13 @@ const handlePayment = async (params) => {
     },
   };
 
+  // calling the constructor passing checkout options
   const rz = new Razorpay(options);
 
+  //calling open method
+  rz.open();
+
+  // handle failure scenario
   rz.on("payment.failed", function (response) {
     alert(response.error.code);
     alert(response.error.description);
@@ -73,8 +79,6 @@ const handlePayment = async (params) => {
     alert(response.error.metadata.order_id);
     alert(response.error.metadata.payment_id);
   });
-
-  rz.open();
 };
 ```
 
