@@ -18,7 +18,11 @@ const handlePayment = async (params) => {
 
   // After order success will get razorpay orderId from your backend response
   const options: RazorpayCheckoutOptions = {
-    key: "YOUR_KEY_ID", // String API Key ID generated from the Razorpay Dashboard.
+    /**
+     * String API Key ID generated from the Razorpay Dashboard.
+     * Note: Please call the key id form environment variables
+     * */
+    key: "YOUR_KEY_ID",
 
     /**
      * Integer The amount to be paid by the customer in currency subunits.
@@ -26,7 +30,7 @@ const handlePayment = async (params) => {
      * Note: Amount is optional field, you will give an amount during order creation in backend.
      * Your order id have the information about the order and you will notice when the pop up is open.
      */
-    amount: "50000",
+    amount: 50000,
 
     /**
      * String The currency in which the payment should be made by the customer.
@@ -40,7 +44,7 @@ const handlePayment = async (params) => {
      * @example
      * Grids And Guides Technologies Pvt Ltd.
      */
-    name: "Acme Corp",
+    name: "Grids And Guides Technologies",
 
     /**
      * String Description of the purchase item shown on the Checkout form.
@@ -71,15 +75,16 @@ const handlePayment = async (params) => {
 
   // handle failure scenario
   rz.on("payment.failed", function (response) {
-    alert(response.error.code);
-    alert(response.error.description);
-    alert(response.error.source);
-    alert(response.error.step);
-    alert(response.error.reason);
-    alert(response.error.metadata.order_id);
-    alert(response.error.metadata.payment_id);
+    alert(response.error);
   });
 };
+
+
+return(
+    <RazorpayScript />
+
+    <button onClick={handlePayment} > pay </button>
+)
 ```
 
 For more information read official docs https://razorpay.com/docs/payments/payment-gateway/web-integration/standard/integration-steps/#123-checkout-options

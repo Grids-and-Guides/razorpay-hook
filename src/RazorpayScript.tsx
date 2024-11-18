@@ -24,4 +24,4 @@ const RazorpayScript: React.FC<RazorpayScriptProps> = ({ ...attributes }) => {
   return null;
 };
 
-export { RazorpayScript };
+export default RazorpayScript;

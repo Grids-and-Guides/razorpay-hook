@@ -1,4 +1,4 @@
 
 export * from './razorpay'
 
-export * as RazorpayScript from './RazorpayScript'
+export { default as RazorpayScript } from './RazorpayScript';
