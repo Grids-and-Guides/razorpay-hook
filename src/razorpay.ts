@@ -420,14 +420,14 @@ export class Razorpay {
 
     // Validate the orderId
     if (!this.checkValidOrderId(this.options.order_id)) {
-      console.log("Invalid Razorpay OrderId. Initialization aborted.");
+      console.error("Invalid Razorpay OrderId. Initialization aborted.");
       return;
     }
 
     // Initialize Razorpay only if running in a browser environment and orderId is valid
     if (typeof window !== "undefined") {
       this.razorpayService = new (window as any).Razorpay(this.options);
-      console.log("Razorpay is loaded");
+      console.info("Razorpay is loaded");
     }
   }
 
@@ -483,7 +483,7 @@ export class Razorpay {
   private checkValidOrderId(orderId: string): boolean {
     const regex = /^order_[a-zA-Z0-9]{14,}$/;
     if (!regex.test(orderId)) {
-      console.log("Invalid Razorpay OrderId");
+      console.error("Invalid Razorpay OrderId");
       return false;
     }
     return true;
