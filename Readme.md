@@ -60,7 +60,7 @@ export default function Razorpay() {
       /**
        * String Order ID generated via Orders API.
        * * @See {@link https://razorpay.com/docs/api/orders/ Razorpay Docs }
-       * Note: Blow order id displayed only for reference. You need to pass order id generated via order api response.
+       * Note: Below order id displayed only for reference. You need to pass order id generated via order api response.
        * If you passing invalid order id the pop up will not open, you will see the error from the console.
        */
       order_id: "order_9A33XWu170gUtm",
