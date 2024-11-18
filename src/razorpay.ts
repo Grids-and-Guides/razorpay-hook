@@ -2,6 +2,8 @@
  * @see {@link https://razorpay.com/docs/payments/payment-gateway/web-integration/standard/integration-steps/#123-checkout-options Razorpay Checkout Docs}
  */
 
+import { useEffect } from "react";
+
 /**
  * The checkout returns the response object of the successful payment (razorpay_payment_id, razorpay_order_id and razorpay_signature).
  * Collect these and send them to your server.
@@ -488,4 +490,49 @@ export class Razorpay {
     }
     return true;
   }
+}
+
+export function useRazorpay() {
+  const RAZORPAY_SCRIPT = "https://checkout.razorpay.com/v1/checkout.js";
+
+  const loadScript = (src: string): Promise<boolean> => {
+    return new Promise((resolve, reject) => {
+      if (!(typeof window !== "undefined")) reject(false);
+      const script = document.createElement("script");
+      script.src = src;
+      script.id = "razorpay-script";
+      script.onload = (e) => {
+        resolve(true);
+      };
+
+      script.onerror = (e) => {
+        reject(false);
+      };
+      document.body.appendChild(script);
+    });
+  };
+
+  useEffect(() => {
+
+    const checkScriptLoaded: () => boolean = () => {
+      if (!(typeof window !== "undefined") || !("Razorpay" in window))
+        return false;
+      return true;
+    };
+    
+    if (!checkScriptLoaded()) {
+      (async () => {
+        try {
+          await loadScript(RAZORPAY_SCRIPT);
+        } catch (error: any) {
+          console.log("Failed to load");
+          alert(
+            "Failed to load Razorpay script!!.Check your Internet Connection"
+          );
+        }
+      })();
+    }
+  }, []);
+
+  return Razorpay as typeof Razorpay;
 }
