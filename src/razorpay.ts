@@ -414,7 +414,7 @@ export interface RazorpayCheckoutOptions {
   };
 }
 
-export class Razorpay {
+class Razorpay {
   private readonly razorpayService: any;
 
   constructor(private readonly options: RazorpayCheckoutOptions) {
@@ -519,7 +519,7 @@ export function useRazorpay() {
         return false;
       return true;
     };
-    
+
     if (!checkScriptLoaded()) {
       (async () => {
         try {
