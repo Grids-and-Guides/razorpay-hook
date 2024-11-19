@@ -18,8 +18,14 @@ export default function Razorpay() {
   const Razorpay = useRazorpay();
 
   const handlePayment = async () => {
-    const order = await createOrder(); // must Create order on your backend for security purpose
+    const response = await fetch("/api", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }); // must Create order on your backend for security purpose
 
+    const data = await response.json();
     // After order success will get razorpay orderId from your backend response
     const options: RazorpayCheckoutOptions = {
       /**
@@ -34,7 +40,7 @@ export default function Razorpay() {
        * Note: Amount is optional field, you will give an amount during order creation in backend.
        * Your order id have the information about the order and you will notice when the pop up is open.
        */
-      amount: 50000,
+      amount: data.amount,
 
       /**
        * String The currency in which the payment should be made by the customer.
@@ -63,9 +69,10 @@ export default function Razorpay() {
        * Note: Below order id displayed only for reference. You need to pass order id generated via order api response.
        * If you passing invalid order id the pop up will not open, you will see the error from the console.
        */
-      order_id: "order_9A33XWu170gUtm",
+      order_id: data.orderId // "order_9A33XWu170gUtm",
       handler: function (response: RazorpaySuccessResponse) {
-        alert(response);
+        console.log(response);
+        // write your redirection or others business logic
       },
     };
 
@@ -77,7 +84,7 @@ export default function Razorpay() {
 
     // handle failure scenario
     rz.on("payment.failed", function (response) {
-      alert(response.error);
+      console.log(response.error);
     });
   };
 
