@@ -24,7 +24,7 @@ export default function Razorpay() {
     const options: RazorpayCheckoutOptions = {
       /**
        * String API Key ID generated from the Razorpay Dashboard.
-       * Note: Please call the key id form environment variables
+       * Note: Please call the key id from environment variables
        * */
       key: "YOUR_KEY_ID",
 
