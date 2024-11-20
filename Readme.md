@@ -2,6 +2,23 @@
 
 Seamlessly integrate Razorpay's powerful payment solutions into your React and Next.js applications. This package simplifies the process of setting up secure,types safety, reliable, and efficient payment gateways, giving developers a streamlined experience while building high-performance apps.
 
+
+### Prerequisites
+
+Before starting the integration, make sure to complete the following steps:
+
+1. **Create a Razorpay Account**:  
+   Visit [Razorpay](https://razorpay.com) and sign up for an account. Once registered, you’ll have access to your API Key ID and Secret, which are essential for integration. Navigate to the **API Keys** section in the Razorpay Dashboard to generate your API keys.
+
+2. **Set Up Your Backend API**:  
+   To securely create Razorpay orders, you need to write a backend API. This backend API will generate an order using Razorpay’s [Orders API](https://razorpay.com/docs/api/orders/) and return the `orderId` to your frontend. Here’s a brief outline of what your backend code should include:
+   
+   - **Import Required Modules**: Use your preferred backend language or framework (e.g., Node.js, Python, etc.).
+   - **Authenticate Using Your API Key and Secret**: Ensure secure storage of these credentials.
+   - **Create an Order**: Pass parameters like `amount`, `currency`, and `receipt` to generate the order.
+   - **Return the Order ID**: Send the `orderId` as part of your API response to the frontend.
+
+
 ## Basic Example
 
 ```js
