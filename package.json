@@ -26,15 +26,19 @@
     "url": "https://github.com/Grids-and-Guides/razorpay-hook/issues"
   },
   "homepage": "https://github.com/Grids-and-Guides/razorpay-hook#readme",
+  "peerDependencies": {
+    "next": ">=14.0.0",
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^28.0.1",
     "@rollup/plugin-node-resolve": "^15.3.0",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^12.1.1",
     "@types/react": "^18.3.12",
-    "next": ">=14.0.0",
-    "react": ">=18.0.0",
-    "react-dom": ">=18.0.0",
+    "next": "16.0.5",
+    "react": "19.2.0",
     "rollup": "^4.26.0",
     "rollup-plugin-dts": "^6.1.1",
     "rollup-plugin-peer-deps-external": "^2.2.4",
